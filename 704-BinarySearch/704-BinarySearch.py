@@ -1,18 +1,16 @@
-# Last updated: 2/10/2026, 8:01:10 PM
-1# Definition for singly-linked list.
-2# class ListNode:
-3#     def __init__(self, x):
-4#         self.val = x
-5#         self.next = None
-6
-7class Solution:
-8    def hasCycle(self, head: Optional[ListNode]) -> bool:
-9        
-10        slow = fast = head
-11
-12        while fast and fast.next:
-13            slow = slow.next
-14            fast = fast.next.next
-15            if slow == fast:
-16                return True
-17        return False
+# Last updated: 2/10/2026, 9:19:10 PM
+1class Solution:
+2    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+3        
+4        # Bruteforce
+5        n = nums1 + nums2
+6        n.sort()
+7        lenn = len(n)
+8        if (len(n)%2) != 0:
+9            med = int(lenn//2)
+10            return float(n[med])
+11        else:
+12            med1 = int(lenn//2)
+13            med2 = int((lenn//2)-1)
+14            med = float((n[med1] + n[med2])/2)
+15            return med
